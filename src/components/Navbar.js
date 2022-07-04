@@ -24,27 +24,29 @@ const Navigation = ({ handleCreateAcc }) => (
           />
         </Link>
       </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
+      <Navbar.Toggle aria-controls="navbarScroll" />
+      <Navbar.Collapse id="navbarScroll">
+        <Nav
+          className="me-auto my-2 my-lg-0"
+          style={{ maxHeight: "100px" }}
+          navbarScroll
+        >
           <Nav.Link href="#cartao">Cartão</Nav.Link>
           <Nav.Link href="#quemsomos">Quem Somos</Nav.Link>
           <Nav.Link href="#faq">FAQ</Nav.Link>
         </Nav>
-        <ButtonGroup aria-label="Basic example" className="ms-auto">
+        <ButtonGroup aria-label="Basic example">
           <Button variant="outline-light">
             <NavDropdown title="Acessar minha conta" id="basic-nav-dropdown">
               <NavDropdown.Item>
-                <Link to="/login"> Pessoa Física </Link>
+                <Link to="/login">Pessoa física</Link>
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item>
-                <Link to="/login"> Pessoa Jurídica</Link>
-              </NavDropdown.Item>
+              <NavDropdown.Item>Pessoa jurídica</NavDropdown.Item>
             </NavDropdown>
           </Button>
           <Button variant="outline-light" onClick={handleCreateAcc}>
-            abra sua conta
+            Abra sua conta
           </Button>
         </ButtonGroup>
       </Navbar.Collapse>

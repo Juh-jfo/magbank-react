@@ -1,17 +1,19 @@
 import React from "react";
-import { Container, Row, Button } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 
 const CenteredButton = ({ children, onClick }) => (
   <Container>
-    <Row className="d-grid justify-content-center">
-      <Button
-        className="my-5 px-5 py-3"
-        variant="success"
-        size="lg"
-        onClick={onClick}
-      >
-        {children}
-      </Button>
+    <Row>
+      <Col className="d-flex justify-content-center">
+        <Button
+          className="my-5 px-5 py-3"
+          variant="success"
+          size="lg"
+          onClick={onClick}
+        >
+          {children}
+        </Button>
+      </Col>
     </Row>
   </Container>
 );

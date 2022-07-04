@@ -45,7 +45,7 @@ const CreditCard = () => (
               color="#f05656"
               textClassName="h5 text-muted"
             >
-              Pagamentos Online
+              Pagamentos online
             </IconText>
           </Col>
           <Col xs={12} lg={6} className="mb-4">
@@ -55,7 +55,7 @@ const CreditCard = () => (
               color="#f05656"
               textClassName="h5 text-muted"
             >
-              Pagamento Digital
+              Pagamento digital
             </IconText>
           </Col>
         </Row>

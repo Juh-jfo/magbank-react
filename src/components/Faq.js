@@ -1,19 +1,21 @@
-import React, { useState } from "react";
-import { Container, Row, Col, Accordion } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { Container, Col, Row, Accordion } from "react-bootstrap";
+import IconText from "./IconText";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCreditCard,
-  faUserTie,
   faWallet,
-  faShield,
+  faShieldAlt,
+  faUserTie,
 } from "@fortawesome/free-solid-svg-icons";
+
 import "./Faq.scss";
 
 const Faq = () => {
   const options = [
-    { icon: faCreditCard, text: "Cartão de crédito e débito" },
+    { icon: faCreditCard, text: "Cartão de crédito" },
     { icon: faWallet, text: "Conta e abertura" },
-    { icon: faShield, text: "Token digital" },
+    { icon: faShieldAlt, text: "Token digital" },
     { icon: faUserTie, text: "Produtos e serviços" },
   ];
 
@@ -23,58 +25,71 @@ const Faq = () => {
     setIndex(key);
   };
 
+  useEffect(() => {
+    console.log(index);
+  }, [index]);
+
   return (
     <section className="faq text-light">
-      <Container className=" py-5">
-        <h2 className="faq-title my-5 pb-2 d-grid justify-content-center">
-          Dúvidas frequentes
-        </h2>
+      <Container className="py-5">
+        <Col className="d-flex justify-content-center">
+          <Row>
+            <h2 className="faq-title my-5">Dúvidas frequentes</h2>
+          </Row>
+        </Col>
         <Row className="d-flex align-items-center justify-items-center">
-          <Col className="d-lg-none mb-5 justify-items-center" xs={12}>
+          <Col className="d-lg-none mb-5" xs={12}>
             <Row>
               {options.map(({ icon }, key) => (
-                <Col className="d-flex justify-content-center">
+                <Col className="d-flex justify-content-center" key={key}>
                   <FontAwesomeIcon
                     icon={icon}
                     size="2x"
-                    color={key === index ? "#fff" : "#bbb"}
+                    color={key === index ? "#FFF" : "#BBB"}
                     onClick={() => handleClick(key)}
                   />
                 </Col>
               ))}
             </Row>
-            <Row className="ms-5 ps-5 mt-5">
-              <p className="lead">{options[index].text}</p>
+            <Row>
+              <Col className="d-flex justify-content-center mt-5">
+                <p className="lead"> {options[index].text} </p>
+              </Col>
             </Row>
           </Col>
 
           <Col className="d-none d-lg-block">
             {options.map(({ icon, text }, key) => (
-              <Row className="align-items-center mb-3">
-                <Col xs={2} className=" d-flex justify-items-center">
-                  <FontAwesomeIcon
-                    icon={icon}
-                    size="3x"
-                    color={key === index ? "#fff" : "#bbb"}
-                    onClick={() => handleClick(key)}
-                    key={key}
-                  />
-                </Col>
-                <Col
-                  xs={10}
-                  className="h5 fw-normal d-none d-lg-block"
-                  onClick={() => handleClick(key)}
-                  key={key}
-                >
-                  {text}
-                </Col>
-              </Row>
+              <IconText
+                icon={icon}
+                size={3}
+                className="faq-clickable mb-3"
+                textClassName="lead"
+                color={key === index ? "#FFF" : "#BBB"}
+                onClick={() => handleClick(key)}
+                key={key}
+              >
+                {text}
+              </IconText>
             ))}
           </Col>
 
           <Col>
+            {/*<Accordion defaultActiveKey="0">
+          <Card className="faq__card">
+            <Card.Header>
+              <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                Click me!
+              </Accordion.Toggle>
+            </Card.Header>
+            <Accordion.Collapse eventKey="0">
+              <Card.Body>Hello! I'm the body</Card.Body>
+            </Accordion.Collapse>
+          </Card>
+        </Accordion>*/}
+
             <Accordion defaultActiveKey="0" activeKey={`${index}`}>
-              <Accordion.Item eventKey="0" className="faq__card">
+              <Accordion.Item eventKey="0">
                 <Accordion.Header>Lorem ipsum dolor sit amet</Accordion.Header>
                 <Accordion.Body>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -87,7 +102,7 @@ const Faq = () => {
                   mollit anim id est laborum.
                 </Accordion.Body>
               </Accordion.Item>
-              <Accordion.Item eventKey="1" className="faq__card">
+              <Accordion.Item eventKey="1">
                 <Accordion.Header>
                   Nulla porttitor eros ac ex tristique posuere
                 </Accordion.Header>
@@ -102,7 +117,7 @@ const Faq = () => {
                   mollit anim id est laborum.
                 </Accordion.Body>
               </Accordion.Item>
-              <Accordion.Item eventKey="2" className="faq__card">
+              <Accordion.Item eventKey="2">
                 <Accordion.Header>
                   Quisque fringilla tincidunt arcu
                 </Accordion.Header>
@@ -117,8 +132,8 @@ const Faq = () => {
                   mollit anim id est laborum.
                 </Accordion.Body>
               </Accordion.Item>
-              <Accordion.Item eventKey="3" className="faq__card">
-                <Accordion.Header className="header">
+              <Accordion.Item eventKey="3">
+                <Accordion.Header>
                   Nam elementum lobortis purus a maximus tortor
                 </Accordion.Header>
                 <Accordion.Body>
