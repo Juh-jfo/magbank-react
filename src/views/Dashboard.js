@@ -10,7 +10,7 @@ import AccountHistory from "../components/AccountHistory";
 
 import "./Dashboard.scss";
 
-const Dashboard = ({ className = false }) => {
+const Dashboard = ({ className = false, name, account }) => {
   const [activeLink, setActiveLink] = useState(0);
 
   const links = [
@@ -33,9 +33,81 @@ const Dashboard = ({ className = false }) => {
       { date: "20/08", description: "NETFLIX 235236", value: "30,00" },
       { date: "15/08", description: "FARMACIA 12125", value: "350,00" },
     ],
-    history: ["historico 1", "historico 2"],
+    history: [
+      {
+        date: "17/07",
+        description: "SAQUE 24H 325652",
+        value: "200,00-",
+        balance: "",
+      },
+      {
+        date: "17/07",
+        description: "SALDO DO DIA",
+        value: "",
+        balance: "2.780,00",
+      },
+      {
+        date: "19/07",
+        description: "ESTACIONAMENTO 123234",
+        value: "12,00-",
+        balance: "",
+      },
+      {
+        date: "19/07",
+        description: "COMPRA INTERNET 123432",
+        value: "450,00-",
+        balance: "",
+      },
+      {
+        date: "19/07",
+        description: "SALDO DO DIA",
+        value: "",
+        balance: "2.318,00",
+      },
+      {
+        date: "21/07",
+        description: "SUPERMERCADO 2312332",
+        value: "275,90-",
+        balance: "",
+      },
+      {
+        date: "21/07",
+        description: "ESTACIONAMENTO 123234",
+        value: "12,00-",
+        balance: "",
+      },
+      {
+        date: "21/07",
+        description: "SHOPPING 123432",
+        value: "180,00-",
+        balance: "",
+      },
+      {
+        date: "21/07",
+        description: "SALDO DO DIA",
+        value: "",
+        balance: "1.851,00",
+      },
+      {
+        date: "22/07",
+        description: "SUPERMERCADO 2312332",
+        value: "275,90-",
+        balance: "",
+      },
+      {
+        date: "22/07",
+        description: "DEPÓSITO",
+        value: "1.000,00",
+        balance: "",
+      },
+      {
+        date: "22/08",
+        description: "SALDO DO DIA",
+        value: "",
+        balance: "2576,00",
+      },
+    ],
   };
-
   return (
     <Container className={`dashboard py-5 ${className ? className : ""}`}>
       <Row>
@@ -53,8 +125,8 @@ const Dashboard = ({ className = false }) => {
               </span>
             </Col>
             <Col xs={9}>
-              <h4>Juliana Fontes</h4>
-              <p className="text-muted">Ag: 1234 C/C: 4321-5</p>
+              <h4>{name}</h4>
+              <p className="text-muted">{account}</p>
             </Col>
           </Row>
 
